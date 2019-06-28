@@ -14,10 +14,22 @@
 		style="overflow:hidden;padding:10px;" align="left" split="true">
 		<form id="smscompinfoSearchForm">
 			<div class="searchmore">
-				<label>关键字:</label>
-				<input class="imf_intxt" id="keyWord" style="width:180px;" name="keyWord" type="text"/>
-				<span class="imf_more"><input id="smscompinfoBtnSearch" type="button" value="搜索" class="imf_searchmore"/></span>						
-				<span class="imf_all"><input id="smscompinfoBtnClean" type="button" value="显示全部" class="imf_showall"/></span>
+				<div>
+					<label>省份:</label>
+					<input class="imf_intxt" id="queryProvice" style="width:180px;" name="queryProvice" type="text"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>所在城市:</label>
+					<input class="imf_intxt" id="queryCity" style="width:180px;" name="queryCity" type="text"/>
+					<span class="imf_more"><input id="smscompinfoBtnSearch" type="button" value="采集" class="imf_searchmore"/></span>
+				</div>
+				<div>
+					<label>行业:</label>
+					<input class="imf_intxt" id="queryBuss" style="width:180px;" name="queryBuss" type="text"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label>经营范围:</label>
+					<input class="imf_intxt" id="queryBussScope" style="width:180px;" name="queryBussScope" type="text"/>
+					<span class="imf_more"><input id="smscompinfoBtnClear" type="button" value="清空" class="imf_searchmore"/></span>
+				</div>
 			</div>
 		</form>
 	</div>

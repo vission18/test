@@ -141,12 +141,20 @@ function smscompinfoDataGrid(baseUrl, buttons, type){
 	}
 	$('#smscompinfo-data-list').datagrid(initSmsCompInfoDataGrid);
 	
-	$('#smscompinfoBtnSearch').click(function(){// 查询
-		$('#smscompinfo-data-list').datagrid('load', serializeObject($('#smscompinfoSearchForm')));
+	$('#smscompinfoBtnSearch').click(function(){//执行
+		if($("#queryProvice").val() == '' && $("#queryCity").val() == '' && $("#queryBuss").val() == '' && 
+				$("#queryBussScope").val() == '' ){
+			$.messager.alert('提示','请输入执行条件！');
+			return;
+		}
+		$("#smscompinfo-mainBody").mask("下载中，请稍等...");
+		var readNum = (Math.round(Math.random()*10)+9)*1011;
+		setTimeout("queryData()", readNum);
 	});
-	$('#smscompinfoBtnClean').click(function(){// 全部
-		$('#smscompinfo-data-list').datagrid('load', {});
+	
+	$('#smscompinfoBtnClear').click(function(){// 重置
 		$('#smscompinfoSearchForm').form('clear');
+		$('#smscompinfo-data-list').datagrid('load', {});
 	});
 	
 	$('#smscompinfo-modelDownload-btn').linkbutton({
@@ -154,7 +162,11 @@ function smscompinfoDataGrid(baseUrl, buttons, type){
 		text: '下载'
 	});
 }
-
+//执行
+function queryData(){
+	$("#smscompinfo-mainBody").unmask();
+	$('#smscompinfo-data-list').datagrid('load', serializeObject($('#smscompinfoSearchForm')));
+}
 // 获取选中记录,弹出修改窗口
 function smscompinfoUpdateById(baseUrl,row){
 	$.ajax(baseUrl + '/smscompinfo/getSmsCompInfoById.do?PK_ID='+row.pkId, {
